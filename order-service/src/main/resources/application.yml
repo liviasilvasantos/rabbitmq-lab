@@ -1,0 +1,11 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: 123456
+
+rabbitmq:
+  routingKey:
+  exchange: "rabbitmqlab.order.exchange"
+  queue: "rabbitmqlab.order.order-created.v1"
