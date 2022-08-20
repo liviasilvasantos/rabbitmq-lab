@@ -1,4 +1,4 @@
-package com.liviasantos.lab.rabbitmq.config.rabbit;
+package com.liviasantos.lab.rabbitmq.order.config.rabbit;
 
 import lombok.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;

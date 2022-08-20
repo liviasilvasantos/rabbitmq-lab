@@ -1,7 +1,7 @@
-package com.liviasantos.lab.rabbitmq.gateway.http;
+package com.liviasantos.lab.rabbitmq.order.gateway.http;
 
-import com.liviasantos.lab.rabbitmq.config.rabbit.RabbitMQProperties;
-import com.liviasantos.lab.rabbitmq.gateway.http.json.OrderJson;
+import com.liviasantos.lab.rabbitmq.order.config.rabbit.RabbitMQProperties;
+import com.liviasantos.lab.rabbitmq.order.gateway.http.json.OrderJson;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
@@ -23,6 +23,6 @@ public class OrderController {
     @PostMapping
     public void createOrder(@RequestBody final OrderJson orderJson){
         log.info("creating order {}", orderJson);
-        rabbitTemplate.send(rabbitMQProperties.getQueue(), new Message(orderJson.getCode().getBytes()));
+        rabbitTemplate.convertAndSend(rabbitMQProperties.getQueue(), orderJson.getCode());
     }
 }

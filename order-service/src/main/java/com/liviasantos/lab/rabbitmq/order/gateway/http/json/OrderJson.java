@@ -1,4 +1,4 @@
-package com.liviasantos.lab.rabbitmq.gateway.http.json;
+package com.liviasantos.lab.rabbitmq.order.gateway.http.json;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
