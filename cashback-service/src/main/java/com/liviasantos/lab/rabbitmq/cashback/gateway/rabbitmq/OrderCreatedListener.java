@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class OrderCreatedListener {
 
     @RabbitListener(queues = "${rabbitmq.queue}")
-    public void listener(final String message){
-        log.info("mensagem recebida {}", message);
+    public void listener(final OrderCreatedEvent event){
+        log.info("evento recebida {}", event);
     }
 }

@@ -5,11 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @ToString
-public class OrderJson {
+public class OrderJson implements Serializable {
 
     private String code;
     private String store;
