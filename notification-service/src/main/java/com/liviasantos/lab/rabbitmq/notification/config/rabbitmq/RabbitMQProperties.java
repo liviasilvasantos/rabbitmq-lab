@@ -12,6 +12,6 @@ import org.springframework.stereotype.Component;
 public class RabbitMQProperties {
 
     private String routingKey;
-    private String exchange;
-    private String queue;
+    private String fanoutExchange;
+    private String queueNotification;
 }

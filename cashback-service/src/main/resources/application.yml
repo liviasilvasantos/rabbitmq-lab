@@ -7,5 +7,5 @@ spring:
 
 rabbitmq:
   routingKey:
-  exchange: "rabbitmqlab.order.exchange"
-  queue: "rabbitmqlab.order.order-created.v1"
+  fanout-exchange: "rabbitmqlab.order.order-created.v1"
+  queue-cashback: "rabbitmqlab.order.order-created.generate-cashback.v1"

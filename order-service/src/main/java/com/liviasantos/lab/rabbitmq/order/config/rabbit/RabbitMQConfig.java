@@ -1,7 +1,7 @@
 package com.liviasantos.lab.rabbitmq.order.config.rabbit;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -18,8 +18,8 @@ public class RabbitMQConfig {
     private final RabbitMQProperties rabbitMQProperties;
 
     @Bean
-    public Queue queue(){
-        return new Queue(rabbitMQProperties.getQueue());
+    public FanoutExchange fanoutExchange(){
+        return new FanoutExchange(rabbitMQProperties.getFanoutExchange());
     }
 
     @Bean

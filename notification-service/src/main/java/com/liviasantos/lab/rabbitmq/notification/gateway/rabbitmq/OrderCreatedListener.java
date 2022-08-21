@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class OrderCreatedListener {
 
-    @RabbitListener(queues = "${rabbitmq.queue}")
+    @RabbitListener(queues = "${rabbitmq.queue-notification}")
     public void listener(final OrderCreatedEvent event){
-        log.info("evento recebida {}", event);
+        log.info("evento recebido {}", event);
     }
 }

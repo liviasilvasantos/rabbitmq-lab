@@ -25,7 +25,7 @@ public class OrderController {
         var orderCreatedEvent = buildOrderCreatedEvent(orderJson);
         log.info("creating order {}", orderCreatedEvent);
 
-        rabbitTemplate.convertAndSend(rabbitMQProperties.getQueue(), orderCreatedEvent);
+        rabbitTemplate.convertAndSend(rabbitMQProperties.getFanoutExchange(), "", orderCreatedEvent);
     }
 
     private static OrderCreatedEvent buildOrderCreatedEvent(OrderJson orderJson) {
