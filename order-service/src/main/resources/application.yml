@@ -8,6 +8,7 @@ spring:
 rabbitmq:
   routingKey:
   fanout-exchange: "rabbitmqlab.order.order-created.v1"
+  fanout-exchange-dlx: "rabbitmqlab.order.order-created.dlx.v1"
   queue-cashback: "rabbitmqlab.order.order-created.generate-cashback.v1"
   queue-notification: "rabbitmqlab.order.order-created.send-notification.v1"
 # project.service.event.action

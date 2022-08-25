@@ -23,6 +23,11 @@ public class RabbitMQConfig {
     }
 
     @Bean
+    public FanoutExchange fanoutExchangeDlx(){
+        return new FanoutExchange(rabbitMQProperties.getFanoutExchangeDlx());
+    }
+
+    @Bean
     public RabbitAdmin rabbitAdmin(final ConnectionFactory connectionFactory){
         return new RabbitAdmin(connectionFactory);
     }
