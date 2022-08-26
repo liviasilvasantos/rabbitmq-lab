@@ -38,6 +38,11 @@ public class RabbitMQConfig {
     }
 
     @Bean
+    public Queue queueCashbackDlqParkingLot(){
+        return new Queue(rabbitMQProperties.getQueueCashbackDlqParkingLot());
+    }
+
+    @Bean
     public FanoutExchange fanoutExchange(){
         return new FanoutExchange(rabbitMQProperties.getFanoutExchange());
     }

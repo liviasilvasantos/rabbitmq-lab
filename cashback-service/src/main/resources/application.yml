@@ -7,11 +7,11 @@ spring:
     listener:
       simple:
         default-requeue-rejected: false   #desativa reprocessamento em caso de falha
-        retry:    #reprocessamento trava as próximas mensagens
-          enabled: true   #integraçao spring retry com o amqp
-          max-attempts: 3   #tenta reprocessar a mensagem 3x antes de descartar a mensagem
-          initial-interval: 5s    #espero 5 segundos para retentar
-          multiplier: 2   #5s, 10s, 20s
+#        retry:    #reprocessamento trava as próximas mensagens
+#          enabled: true   #integraçao spring retry com o amqp
+#          max-attempts: 3   #tenta reprocessar a mensagem 3x antes de descartar a mensagem
+#          initial-interval: 5s    #espero 5 segundos para retentar
+#          multiplier: 2   #5s, 10s, 20s
 
 rabbitmq:
   routingKey:
@@ -19,3 +19,4 @@ rabbitmq:
   fanout-exchange-dlx: "rabbitmqlab.order.order-created.dlx.v1"
   queue-cashback: "rabbitmqlab.order.order-created.generate-cashback.v1"
   queue-cashback-dlq: "rabbitmqlab.order.order-created.generate-cashback.dlq.v1"
+  queue-cashback-dlq-parking-lot: "rabbitmqlab.order.order-created.generate-cashback.dlq.parking-lot.v1"

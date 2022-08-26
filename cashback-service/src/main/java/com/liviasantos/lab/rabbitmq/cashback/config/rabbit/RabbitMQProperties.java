@@ -15,4 +15,6 @@ public class RabbitMQProperties {
     private String fanoutExchangeDlx;
     private String queueCashback;
     private String queueCashbackDlq;
+    private String queueCashbackDlqParkingLot;
+
 }
