@@ -12,7 +12,7 @@ public class OrderCreatedListener {
     public void listener(final OrderCreatedEvent event){
         log.info("evento recebida {}", event);
 
-        if(event.getTotalValueInCents() > 5000L){
+        if(event.getTotalValueInCents().compareTo(new Long(5000)) >= 0){
             throw new RuntimeException("Falha no processamento da venda " + event.getCode());
         }
     }

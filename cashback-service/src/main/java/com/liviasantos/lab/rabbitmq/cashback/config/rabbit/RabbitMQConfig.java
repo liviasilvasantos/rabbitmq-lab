@@ -28,6 +28,7 @@ public class RabbitMQConfig {
         Map<String, Object> args = new HashMap<>();
         args.put("x-dead-letter-exchange", rabbitMQProperties.getFanoutExchangeDlx());
 //        args.put("x-dead-letter-routing-key", rabbitMQProperties.getQueueCashbackDlq());
+        args.put("x-max-priority", new Integer(10));
 
         return new Queue(rabbitMQProperties.getQueueCashback(), true, false, false, args);
     }

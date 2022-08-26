@@ -5,6 +5,8 @@ import com.liviasantos.lab.rabbitmq.order.gateway.http.json.OrderJson;
 import com.liviasantos.lab.rabbitmq.order.gateway.rabbit.OrderCreatedEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.core.MessagePostProcessor;
+import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +27,20 @@ public class OrderController {
         var orderCreatedEvent = buildOrderCreatedEvent(orderJson);
         log.info("creating order {}", orderCreatedEvent);
 
-        rabbitTemplate.convertAndSend(rabbitMQProperties.getFanoutExchange(), "", orderCreatedEvent);
+        final int priority;
+        if(orderCreatedEvent.getTotalValueInCents().compareTo(new Long(3000)) >= 0){
+            priority = 5;
+        } else {
+            priority = 1;
+        }
+
+        MessagePostProcessor messagePostProcessor = message -> {
+            MessageProperties messageProperties = message.getMessageProperties();
+            messageProperties.setPriority(priority);
+            return message;
+        };
+
+        rabbitTemplate.convertAndSend(rabbitMQProperties.getFanoutExchange(), "", orderCreatedEvent, messagePostProcessor);
     }
 
     private static OrderCreatedEvent buildOrderCreatedEvent(OrderJson orderJson) {
